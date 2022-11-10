@@ -1,0 +1,62 @@
+{
+  "depth-session": "depth session",
+  "pool-session": "pool session",
+  "register-button": "register",
+  "show-list-button": "show waiting list",
+  "header": "Waiting Lists",
+  "register": {
+    "description": "You are about to register this event, please fill the following details:",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "required": "Required",
+    "invalid-phone": "Invalid phone number",
+    "table": {
+      "name": "Name",
+      "phone": "Phone Number"
+    },
+    "contact": {
+      "title": "Contact {{name}}",
+      "whatsapp": "Contact via Whatsapp",
+      "phone-call": "Contact via phone call"
+    },
+    "error-registration": "There was an error with registraion process, please try again."
+  },
+  "waiting-list": {
+    "description": "Click on contact for information:",
+    "show-exchanges": "Exchanges List",
+    "full-name": "Full Name",
+    "exchange-name": "Exchange Name",
+    "exchange": {
+      "title": "Exchanges List"
+    }
+  },
+  "unregister": {
+    "title": "Remove {{name}}",
+    "description": "Are you sure you want to remove {{name}} from {{event}}? This action is deteminate and can't be repruduceable.",
+    "required": "Required",
+    "reason-select": "Delete Reason",
+    "reason-not-relevant": "Event isn't relevant for me",
+    "reason-exchange": "I found an exchange",
+    "reason-exchange-name": "Exchange Name",
+    "reason-select-placeholder": "Select reason for delete",
+    "submit": "Unregister",
+    "error": "Error accured while trying to delete from event, please try again."
+  },
+  "add-event": {
+    "title": "Add New Event",
+    "event-type": {
+      "depth": "Depth session",
+      "pool": "Pool session",
+      "placeholder": "Event type"
+    },
+    "description": "To create new event please make sure isn't exsit and fill the following deatils:",
+    "create": "Create",
+    "event-date": {
+      "placeholder": "Event Date"
+    },
+    "date-field": "Date",
+    "error": "There was a problem with event creation, please make sure the event isn't exsit already and try again."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "depth-session": "אימון עומק",
+  "pool-session": "אימון בריכה",
+  "register-button": "הירשם לרשימת המתנה",
+  "show-list-button": "הצג רשימת המתנה",
+  "header": "רשימת המתנה לאירועים",
+  "register": {
+    "description": "על מנת להירשם לרשימת המתנה לאירוע אנא מלאו את הפרטים הבאים:",
+    "cancel": "ביטול",
+    "submit": "הירשם",
+    "name": "שם מלא",
+    "phone": "מספר פלאפון",
+    "required": "שדה חובה",
+    "invalid-phone": "מספר לא תקין",
+    "table": {
+      "name": "שם",
+      "phone": "פלאפון"
+    },
+    "contact": {
+      "title": "יצירת קשר עם {{name}}",
+      "whatsapp": "צור קשר באמצעות וואטסאפ",
+      "phone-call": "צור קשר באמצעות שיחת טלפון"
+    },
+    "error-registration": "בעיה בהרשמה לאירוע, אנא נסו שוב."
+  },
+  "waiting-list": {
+    "description": "לחץ על איש קשר להתקשרות:",
+    "show-exchanges": "רשימת החלפות",
+    "full-name": "שם",
+    "exchange-name": "שם ההחלפה",
+    "exchange": {
+      "title": "רשימת החלפות"
+    }
+  },
+  "unregister": {
+    "title": "הסרת {{name}}",
+    "description": " שימו לב! \n הסרת {{name}} מרשימת המתנה עבור אירוע {{event}} היא סופית וללא אפשרות שיחזור.",
+    "required": "שדה חובה",
+    "reason-select": "סיבת הסרה",
+    "reason-not-relevant": "הסרה מרשימת המתנה",
+    "reason-exchange": "מצאתי החלפה עבורי",
+    "reason-exchange-name": "שם ההחלפה",
+    "reason-select-placeholder": "בחר בסיבה להסרה",
+    "submit": "הסר רישום",
+    "error": "תקלה בעת נסיון להסיר מרשימת המתנה, אנא נסו שנית"
+  },
+  "add-event": {
+    "title": "הוספת אירוע חדש",
+    "event-type": {
+      "depth": "אימון עומק",
+      "pool": "אימון בריכה",
+      "placeholder": "סוג אירוע"
+    },
+    "description": "ליצירת אירוע חדש אנא וודאו שאירוע זה לא קיים ומלאו את הפרטים הבאים:",
+    "create": "צור אירוע",
+    "event-date": {
+      "placeholder": "תאריך האירוע"
+    },
+    "date-field": "תאריך",
+    "error": "תקלה ביצירת אירוע חדש, אנא וודאו כי לא קיים אירוע דומה ברשימה ונסו שוב."
+  }
+}
