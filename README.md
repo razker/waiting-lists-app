@@ -1,7 +1,7 @@
 # Waiting Lists App
 
 This project is a side project developed by Raz Kerman for creating waiting lists for events.
-You can access the app at: [https://fdt-waiting-lists.up.railway.app/](https://fdt-waiting-lists.up.railway.app/)
+You can access the app at: [https://fdt-waiting-lists.up.railway.app/](https://fdt-waiting-lists.up.railway.app/).
 
 ## Available Scripts
 
