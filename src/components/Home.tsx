@@ -3,7 +3,7 @@ import "../App.css";
 import Header from "./Header";
 import { useEffectOnce } from "usehooks-ts";
 import EventsList from "./EventsList/EventsList";
-import { Fab, Grid, useTheme } from "@mui/material";
+import { Fab, Grid, Typography, useTheme } from "@mui/material";
 import { EventsService } from "../services/EventsService";
 import RegisterModal from "./RegisterModal/RegisterModal";
 import plus from "../static/plus.png";
@@ -13,6 +13,8 @@ import { EventData, EventType } from "../global/types";
 import dayjs from "dayjs";
 import { stringToEventType } from "../global/helpers";
 import EventWaitingListModal from "./EventWaitingListModal/EventWaitingListModal";
+import { Box } from "@mui/system";
+import { whitespace } from "stylis";
 
 export enum ModalOptions {
   RegisterEvent,
@@ -151,23 +153,36 @@ const Home = () => {
           <img style={{ padding: 3 }} alt={"close"} src={plus} height={30} />
         </Fab>
         <Grid item>
-          <EventsList
-            events={eventsList}
-            onRegisterEventClick={(eventId: string, eventTitle: string) =>
-              eventActionHandler(
-                eventId,
-                eventTitle,
-                ModalOptions.RegisterEvent
-              )
-            }
-            onShowWaitingListClick={(eventId: string, eventTitle: string) =>
-              eventActionHandler(
-                eventId,
-                eventTitle,
-                ModalOptions.EventWaitingList
-              )
-            }
-          />
+          {eventsList.length === 0 ? (
+            <Box sx={{ padding: 5 }}>
+              <Typography
+                style={{ whiteSpace: "pre-line" }}
+                textAlign={"center"}
+                variant={"h5"}
+                fontWeight={500}
+              >
+                {t("no-events-to-show")}
+              </Typography>
+            </Box>
+          ) : (
+            <EventsList
+              events={eventsList}
+              onRegisterEventClick={(eventId: string, eventTitle: string) =>
+                eventActionHandler(
+                  eventId,
+                  eventTitle,
+                  ModalOptions.RegisterEvent
+                )
+              }
+              onShowWaitingListClick={(eventId: string, eventTitle: string) =>
+                eventActionHandler(
+                  eventId,
+                  eventTitle,
+                  ModalOptions.EventWaitingList
+                )
+              }
+            />
+          )}
         </Grid>
       </Grid>
     </div>

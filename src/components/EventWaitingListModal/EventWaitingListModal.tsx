@@ -17,6 +17,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import styles from "./EventWaitingListModal.module.css";
 import { ModalOptions } from "../Home";
@@ -214,9 +215,9 @@ export default function EventWaitingListModal({
                 unregisterData={unregiseterData}
                 handleDelete={handleRowDeletation}
               />
-              <DialogContentText>
+              <Typography variant="subtitle1" fontWeight={500}>
                 {t("waiting-list.description")}
-              </DialogContentText>
+              </Typography>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <WaitingListTable
                   onRowClick={(data: WaitingListData) =>
