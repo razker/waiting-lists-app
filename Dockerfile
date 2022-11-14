@@ -9,6 +9,9 @@ COPY package*.json ./
 
 RUN npm install
 
+ENV PORT=80
+ENV REACT_APP_WAITING_SERVICE_URL=https://waiting-lists-fdt-service.up.railway.app
+
 COPY . .
 RUN npm run build
 
