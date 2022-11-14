@@ -14,6 +14,4 @@ RUN npm run build
 
 RUN rm -r /usr/share/nginx/html/*
 
-EXPOSE 3000
-
 RUN cp -a build/. /usr/share/nginx/html
