@@ -82,7 +82,7 @@ export default function AddEventModal({
             onSubmit={async (values, { setSubmitting }) => {
               try {
                 const dateToSend = dayjs(values.eventDate)
-                  .set("hour", 0)
+                  .set("hour", 14)
                   .set("minute", 0)
                   .set("second", 0);
                 await handleOnSubmit(values.eventType, dateToSend.format());
