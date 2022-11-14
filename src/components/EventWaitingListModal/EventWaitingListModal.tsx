@@ -42,12 +42,14 @@ type EventExchangeListModalProps = {
   isOpen: boolean;
   handleClose: () => void;
   exchangesList: any[];
+  eventDeletedList: any[];
 };
 
 const EventExchangeListModal = ({
   isOpen,
   handleClose,
-  exchangesList: exchangeList,
+  exchangesList,
+  eventDeletedList,
 }: EventExchangeListModalProps) => {
   const exchangeColumns = [
     { id: "fullName", label: t("waiting-list.full-name") },
@@ -56,33 +58,74 @@ const EventExchangeListModal = ({
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
-      <DialogTitle>{t("waiting-list.exchange.title")}</DialogTitle>
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {exchangeColumns.map((column) => (
-                  <TableCell key={column.id}>{column.label}</TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {exchangeList.map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
-                    {exchangeColumns.map((column) => {
-                      return (
-                        <TableCell key={column.id}>{row[column.id]}</TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+      <DialogTitle>{t("waiting-list.changes-list")}</DialogTitle>
+      <Box>
+        <Typography
+          fontWeight={500}
+          style={{ paddingRight: 10 }}
+          variant={"subtitle1"}
+        >
+          {t("waiting-list.exchanges-list.title")}
+        </Typography>
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+          <TableContainer sx={{ maxHeight: 440 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  {exchangeColumns.map((column) => (
+                    <TableCell key={column.id}>{column.label}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {exchangesList.map((row) => {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
+                      {exchangeColumns.map((column) => {
+                        return (
+                          <TableCell key={column.id}>
+                            {row[column.id]}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Box>
+      <Box sx={{ marginTop: 2 }}>
+        {eventDeletedList.length > 0 ? (
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 440 }}>
+              <Typography
+                fontWeight={500}
+                style={{ paddingRight: 10 }}
+                variant={"subtitle1"}
+              >
+                {t("waiting-list.deleted-list")}
+              </Typography>
+              <Table stickyHeader aria-label="sticky table">
+                <TableBody>
+                  {eventDeletedList.map((row) => (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row?._id}
+                    >
+                      <TableCell key={row?._id}>{row?.fullName}</TableCell>
+                    </TableRow>
+                  ))}
+                  ;
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        ) : null}
+      </Box>
     </Dialog>
   );
 };
@@ -94,6 +137,7 @@ export default function EventWaitingListModal({
 }: EventWaitingListModalProps) {
   const [eventWaitingList, setEventWaitingList] = useState<any[]>([]);
   const [eventExchangesList, setEventExchangesList] = useState<any[]>([]);
+  const [eventDeletedList, setEventDeletedList] = useState<any[]>([]);
   const [contactData, setContactData] = useState<WaitingListData>(
     {} as WaitingListData
   );
@@ -125,6 +169,12 @@ export default function EventWaitingListModal({
       );
 
       setEventExchangesList(eventExchangesListToSet);
+
+      const eventDeletedListToSet = eventWaitingListData.filter(
+        (node: any) => !node.isActive && !node?.exchangeName
+      );
+
+      setEventDeletedList(eventDeletedListToSet);
     };
 
     if (isOpen) {
@@ -169,6 +219,7 @@ export default function EventWaitingListModal({
           isOpen={isExchangesListDialogOpen}
           handleClose={() => setIsExchangesListDialogOpen(false)}
           exchangesList={eventExchangesList}
+          eventDeletedList={eventDeletedList}
         />
         <DialogTitle>
           <Box sx={{ display: "flex", flexDirection: "row" }}>

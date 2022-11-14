@@ -30,6 +30,11 @@
     "exchange-name": "Exchange Name",
     "exchange": {
       "title": "Exchanges List"
+    },
+    "deleted-list": "Deleted Users List",
+    "changes-list": "Changes List",
+    "exchanges-list": {
+      "title": "Exchanges"
     }
   },
   "unregister": {
