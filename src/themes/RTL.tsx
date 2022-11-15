@@ -7,7 +7,7 @@ import i18n from "../i18n";
 // Create rtl cache
 const cacheRtl = createCache({
   key: "muirtl",
-  stylisPlugins: [prefixer, rtlPlugin],
+  stylisPlugins: [prefixer, rtlPlugin as any],
 });
 
 const RTL = (props: any) =>

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { useEffectOnce } from "usehooks-ts";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useTranslation } from "react-i18next";
 import {
@@ -19,7 +17,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import styles from "./EventWaitingListModal.module.css";
 import { ModalOptions } from "../Home";
 import WaitingListTable from "../WaitingListTable/WaitingListTable";
 import { EventsService } from "../../services/EventsService";

@@ -14,7 +14,6 @@ import dayjs from "dayjs";
 import { stringToEventType } from "../global/helpers";
 import EventWaitingListModal from "./EventWaitingListModal/EventWaitingListModal";
 import { Box } from "@mui/system";
-import { whitespace } from "stylis";
 
 export enum ModalOptions {
   RegisterEvent,
