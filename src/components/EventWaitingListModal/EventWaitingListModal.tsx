@@ -56,43 +56,51 @@ const EventExchangeListModal = ({
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>{t("waiting-list.changes-list")}</DialogTitle>
-      <Box>
-        <Typography
-          fontWeight={500}
-          style={{ paddingRight: 10 }}
-          variant={"subtitle1"}
-        >
-          {t("waiting-list.exchanges-list.title")}
-        </Typography>
-        <Paper sx={{ width: "100%", overflow: "hidden" }}>
-          <TableContainer sx={{ maxHeight: 440 }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {exchangeColumns.map((column) => (
-                    <TableCell key={column.id}>{column.label}</TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {exchangesList.map((row) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
-                      {exchangeColumns.map((column) => {
-                        return (
-                          <TableCell key={column.id}>
-                            {row[column.id]}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      </Box>
+      {exchangesList.length > 0 ? (
+        <Box>
+          <Typography
+            fontWeight={500}
+            style={{ paddingRight: 10 }}
+            variant={"subtitle1"}
+          >
+            {t("waiting-list.exchanges-list.title")}
+          </Typography>
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 440 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {exchangeColumns.map((column) => (
+                      <TableCell key={column.id}>{column.label}</TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {exchangesList.map((row) => {
+                    return (
+                      <TableRow
+                        hover
+                        role="checkbox"
+                        tabIndex={-1}
+                        key={row._id}
+                      >
+                        {exchangeColumns.map((column) => {
+                          return (
+                            <TableCell key={column.id}>
+                              {row[column.id]}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </Box>
+      ) : null}
+
       <Box sx={{ marginTop: 2 }}>
         {eventDeletedList.length > 0 ? (
           <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -116,7 +124,6 @@ const EventExchangeListModal = ({
                       <TableCell key={row?._id}>{row?.fullName}</TableCell>
                     </TableRow>
                   ))}
-                  ;
                 </TableBody>
               </Table>
             </TableContainer>
@@ -290,7 +297,7 @@ export default function EventWaitingListModal({
             <Button
               variant="contained"
               onClick={() => setIsExchangesListDialogOpen(true)}
-              disabled={!eventExchangesList.length}
+              disabled={!eventExchangesList.length && !eventDeletedList.length}
             >
               {t("waiting-list.show-exchanges")}
             </Button>

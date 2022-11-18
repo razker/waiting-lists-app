@@ -5,6 +5,8 @@
   text-align: center;
 }
 
-.App {
-  background-color: #e7ebf0;
+html,
+body {
+  height: 100%;
+  background-color: #e7ebf0 !important;
 }

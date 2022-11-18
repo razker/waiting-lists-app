@@ -64,5 +64,6 @@
     "date-field": "Date",
     "error": "There was a problem with event creation, please make sure the event isn't exsit already and try again."
   },
-  "no-events-to-show": "There are no events to show"
+  "no-events-to-show": "There are no events to show",
+  "loading-events": "Loading Events"
 }

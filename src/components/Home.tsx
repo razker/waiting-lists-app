@@ -3,7 +3,13 @@ import "../App.css";
 import Header from "./Header";
 import { useEffectOnce } from "usehooks-ts";
 import EventsList from "./EventsList/EventsList";
-import { Fab, Grid, Typography, useTheme } from "@mui/material";
+import {
+  CircularProgress,
+  Fab,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { EventsService } from "../services/EventsService";
 import RegisterModal from "./RegisterModal/RegisterModal";
 import plus from "../static/plus.png";
@@ -30,6 +36,7 @@ const formatEvents = (events: any) => {
 
 const Home = () => {
   const [eventsList, setEventsList] = useState<EventData[]>([]);
+  const [isEventsLoading, setIsEventsLoading] = useState(true);
   const [currentEventData, setCurrentEventData] = useState({
     eventId: "",
     eventTitle: "",
@@ -46,6 +53,7 @@ const Home = () => {
   const getAllEvents = async () => {
     const events = await eventsService.getEvents();
     setEventsList(formatEvents(events));
+    setIsEventsLoading(false);
   };
 
   useEffectOnce(() => {
@@ -115,7 +123,7 @@ const Home = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <Header />
       <RegisterModal
         isOpen={showRegisterModal}
@@ -133,12 +141,7 @@ const Home = () => {
         handleClose={() => setShowAddEventModal(false)}
         handleOnSubmit={handleAddEventSubmit}
       />
-      <Grid
-        spacing={0}
-        container
-        justifyContent={"center"}
-        flex-direction={"column"}
-      >
+      <Box>
         <Fab
           onClick={() => setShowAddEventModal(true)}
           style={{
@@ -151,8 +154,26 @@ const Home = () => {
         >
           <img style={{ padding: 3 }} alt={"close"} src={plus} height={30} />
         </Fab>
-        <Grid item>
-          {eventsList.length === 0 ? (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {isEventsLoading ? (
+            <Box
+              sx={{
+                marginTop: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+              <Typography variant="h6">{t("loading-events")}</Typography>
+            </Box>
+          ) : eventsList.length === 0 ? (
             <Box sx={{ padding: 5 }}>
               <Typography
                 style={{ whiteSpace: "pre-line" }}
@@ -182,8 +203,8 @@ const Home = () => {
               }
             />
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </div>
   );
 };
