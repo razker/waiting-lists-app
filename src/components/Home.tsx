@@ -3,13 +3,7 @@ import "../App.css";
 import Header from "./Header";
 import { useEffectOnce } from "usehooks-ts";
 import EventsList from "./EventsList/EventsList";
-import {
-  CircularProgress,
-  Fab,
-  Grid,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { CircularProgress, Fab, Typography, useTheme } from "@mui/material";
 import { EventsService } from "../services/EventsService";
 import RegisterModal from "./RegisterModal/RegisterModal";
 import plus from "../static/plus.png";
