@@ -1,6 +1,5 @@
 import axios from "axios";
 import { EventType } from "../global/types";
-import { eventTypeToString } from "../global/helpers";
 
 export class EventsService {
   public async getEvents(): Promise<any> {
@@ -25,7 +24,7 @@ export class EventsService {
         const response = await axios.post(
           `${process.env.REACT_APP_WAITING_SERVICE_URL}/api/event`,
           {
-            eventType: eventTypeToString(eventType),
+            eventType,
             eventDate,
           }
         );

@@ -59,10 +59,13 @@ export default function AddEventModal({
           <DialogContentText>{t("add-event.description")}</DialogContentText>
 
           <Formik
-            initialValues={{ eventType: -1, eventDate: Date.now() }}
+            initialValues={{
+              eventType: "" as string | EventType,
+              eventDate: Date.now(),
+            }}
             validate={(values) => {
               const errors: any = {};
-              if (values.eventType === -1) {
+              if (values.eventType === "") {
                 errors.eventType = t("register.required");
               }
 
@@ -85,7 +88,10 @@ export default function AddEventModal({
                   .set("hour", 14)
                   .set("minute", 0)
                   .set("second", 0);
-                await handleOnSubmit(values.eventType, dateToSend.format());
+                await handleOnSubmit(
+                  values.eventType as EventType,
+                  dateToSend.format()
+                );
                 setSubmitting(false);
                 handleClose(ModalOptions.RegisterEvent);
               } catch (e: any) {
@@ -123,9 +129,6 @@ export default function AddEventModal({
                       onBlur={handleBlur}
                       error={touched.eventType && !!errors?.eventType}
                     >
-                      <MenuItem value={-1}>
-                        <em> {t("add-event.event-type.placeholder")}</em>
-                      </MenuItem>
                       <MenuItem value={EventType.Depth}>
                         {t("add-event.event-type.depth")}
                       </MenuItem>

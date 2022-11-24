@@ -11,7 +11,6 @@ import AddEventModal from "./AddEventModal/AddEventModal";
 import { useTranslation } from "react-i18next";
 import { EventData, EventType } from "../global/types";
 import dayjs from "dayjs";
-import { stringToEventType } from "../global/helpers";
 import EventWaitingListModal from "./EventWaitingListModal/EventWaitingListModal";
 import { Box } from "@mui/system";
 
@@ -23,7 +22,7 @@ export enum ModalOptions {
 const formatEvents = (events: any) => {
   return events.map((event: any) => ({
     eventDate: dayjs(event.eventDate).format("DD/MM/YYYY"),
-    eventType: stringToEventType(event.eventType),
+    eventType: event.eventType,
     eventId: event._id,
   }));
 };

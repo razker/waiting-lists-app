@@ -15,6 +15,6 @@ export type WaitingListData = {
 };
 
 export enum EventType {
-  Depth,
-  Pool,
+  Depth = "DEPTH",
+  Pool = "POOL",
 }
