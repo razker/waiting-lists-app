@@ -144,6 +144,7 @@ const Home = () => {
           }}
           color="primary"
           aria-label="add"
+          disabled={isEventsLoading}
         >
           <img style={{ padding: 3 }} alt={"close"} src={plus} height={30} />
         </Fab>
